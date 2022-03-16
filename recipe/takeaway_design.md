@@ -167,7 +167,7 @@ combinations that reflect the ways in which the system will be used._
 
 burger = Dish.new("Burger", 7.49)
 chips = Dish.new("Chips", 3.99)
-coke = Dish.new("Coca-cola", 2,49)
+coke = Dish.new("Coca-cola", 2.49)
 menu = Menu.new
 menu.add(burger)
 menu.add(chips)
@@ -178,7 +178,7 @@ menu.list # => [burger, chips, coke] * as Dish instances *
 
 burger = Dish.new("Burger", 7.49)
 chips = Dish.new("Chips", 3.99)
-coke = Dish.new("Coca-cola", 2,49)
+coke = Dish.new("Coca-cola", 2.49)
 menu = Menu.new
 menu.add(burger)
 menu.add(chips)
@@ -190,7 +190,7 @@ menu.list # => [burger, coke] * as Dish instances *
 
 burger = Dish.new("Burger", 7.49)
 chips = Dish.new("Chips", 3.99)
-coke = Dish.new("Coca-cola", 2,49)
+coke = Dish.new("Coca-cola", 2.49)
 menu = Menu.new
 menu.add(burger)
 menu.add(chips)
@@ -205,7 +205,7 @@ receipt.total # => 11.48
 
 burger = Dish.new("Burger", 7.49)
 chips = Dish.new("Chips", 3.99)
-coke = Dish.new("Coca-cola", 2,49)
+coke = Dish.new("Coca-cola", 2.49)
 menu = Menu.new
 menu.add(burger)
 menu.add(chips)
@@ -221,7 +221,7 @@ receipt.total # => 7.49
 
 burger = Dish.new("Burger", 7.49)
 chips = Dish.new("Chips", 3.99)
-coke = Dish.new("Coca-cola", 2,49)
+coke = Dish.new("Coca-cola", 2.49)
 menu = Menu.new
 menu.add(burger)
 menu.add(chips)
@@ -243,7 +243,7 @@ receipt.print # =>
 
 burger = Dish.new("Burger", 7.49)
 chips = Dish.new("Chips", 3.99)
-coke = Dish.new("Coca-cola", 2,49)
+coke = Dish.new("Coca-cola", 2.49)
 menu = Menu.new
 menu.add(burger)
 menu.add(chips)
