@@ -9,8 +9,11 @@ client = Twilio::REST::Client.new(account_sid, auth_token)
 from = '+17252151804' # Your Twilio number
 to = '+447763717585' # Your mobile phone number
 
+time = Time.new
+delivery_time = "#{time.hour}:#{time.min + 30}"
+
 client.messages.create(
 from: from,
 to: to,
-body: "YOU'RE A LOSER!!! HAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"
+body: "Your order has been confirmed and will be delivered by #{delivery_time}."
 )
