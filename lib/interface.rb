@@ -10,28 +10,63 @@ class Interface
     @receipt = Receipt.new
   end
 
-  def show_menu
-    puts "Please, take a look at our menu:"
+  def interactive_menu
+    loop do
+      puts "Please, select an option:\n1. See menu\n2. Order an item\n3. Remove an item from order\n4. View items ordered so far\n5. Place order and get receipt\n6. Exit"
+      menu_process(gets.chomp)
+    end
+  end
+
+  def menu_process(input)
+    case input.to_i
+    when 1
+      show_dishes
+    when 2
+      add_to_order
+    when 3
+      remove_from_order
+    when 4
+      show_order
+    when 5
+      place_order
+    when 6
+      exit
+    else
+      puts "Please enter a number corresponding to one of the options."
+    end
+  end
+
+  def show_dishes
     @menu.list.each_with_index do |dish, i|
       puts "#{i + 1}. #{dish.name} - £%.2f" % [dish.price]
     end
   end
 
   def add_to_order
-    puts "Enter the number of an item you would like to order."
-    input = gets.chomp
-    until input == ""
-      if input == "remove"
-        remove_from_order
-      end
-      @order.select(@menu.list[input.to_i - 1])
-      puts "Enter a number to order more items, 'remove' to remove items or just press enter to continue."
-    input = gets.chomp
-    end
+    @order.select(@menu.list[approved_input.to_i - 1])
   end
 
   def remove_from_order
-    # takes user input to delete a dish from order
+    @order.remove(@menu.list[approved_input.to_i - 1])
+  end
+
+  def approved_input
+  input = ""
+    until (1..@menu.list.length).include?(input.to_i)
+      puts "Enter the number of an item on the menu."
+    input = gets.chomp
+    end
+    input
+  end
+
+  def show_order
+    return puts "Order is empty." if @order.show.empty?
+    puts @receipt.print(@order)
+  end
+
+  def place_order
+    request_number
+    print_receipt
   end
 
   def request_number
@@ -39,6 +74,8 @@ class Interface
   end
 
   def print_receipt
+    return puts "Order is empty." if @order.show.empty?
+    puts "Your receipt:"
     puts @receipt.print(@order)
   end
 
@@ -56,6 +93,5 @@ menu.add(burger)
 menu.add(chips)
 menu.add(coke)
 int = Interface.new(menu)
-int.show_menu
-int.add_to_order
-int.print_receipt
+int.show_dishes
+int.interactive_menu

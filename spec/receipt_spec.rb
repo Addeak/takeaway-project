@@ -16,7 +16,6 @@ RSpec.describe Receipt do
       order = double :order, show: [dish_1, dish_2]
       receipt = Receipt.new
       expect(receipt.print(order)).to eq [
-      "Your receipt:",
       "* salad - £3.00",
       "* sushi - £9.00",
       "---------------",

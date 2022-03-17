@@ -15,8 +15,8 @@ class Receipt
   private
 
   def format(order)
-    receipt = "Your receipt:\n"
-
+    receipt = ""
+    
     order.show.each do |dish|
       receipt += "* #{dish.name} - £%.2f\n" % [dish.price]
     end

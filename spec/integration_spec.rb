@@ -75,7 +75,6 @@ RSpec.describe "integration" do
       order. select(coke)
       receipt = Receipt.new
       expect(receipt.print(order)).to eq [
-      "Your receipt:",
       "* Burger - £7.49",
       "* Chips - £3.99",
       "* Coca-cola - £2.49",
@@ -98,7 +97,6 @@ RSpec.describe "integration" do
       order. remove(chips)
       receipt = Receipt.new
       expect(receipt.print(order)).to eq [
-      "Your receipt:",
       "* Burger - £7.49",
       "---------------",
       "Total: £7.49"].join("\n")
