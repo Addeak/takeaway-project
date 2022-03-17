@@ -106,14 +106,14 @@ class Order
 end
 
 class Receipt
-  def initialize(order) # order is an instance of Order
+  def initialize
   end
   
-  def total
+  def total(order)
     # returns total price for the order
   end
 
-  def print
+  def print(order)
     # returns a formatted version of the order including total
   end
 end
@@ -146,6 +146,7 @@ class Interface
   def print_receipt
     # displays itemised receipt to user
   end
+end
 
 class Messenger
   def initialize(number) # number is a phone number
@@ -198,8 +199,8 @@ menu.add(coke)
 order = Order.new(menu)
 order.select(burger)
 order.select(chips)
-receipt = Receipt.new(order)
-receipt.total # => 11.48
+receipt = Receipt.new
+receipt.total(order) # => 11.48
 
 # 4
 
@@ -214,8 +215,8 @@ order = Order.new(menu)
 order.select(burger)
 order.select(chips)
 order.remove(chips)
-receipt = Receipt.new(order)
-receipt.total # => 7.49
+receipt = Receipt.new
+receipt.total(order) # => 7.49
 
 # 5
 
@@ -230,8 +231,8 @@ order = Order.new(menu)
 order.select(burger)
 order.select(chips)
 order. select(coke)
-receipt = Receipt.new(order)
-receipt.print # => 
+receipt = Receipt.new
+receipt.print(order) # => 
   # Your receipt:
   # - Burger - £7.49
   # - Chips - £3.99
@@ -252,8 +253,8 @@ order = Order.new(menu)
 order.select(burger)
 order.select(chips)
 order. remove(chips)
-receipt = Receipt.new(order)
-receipt.print # => 
+receipt = Receipt.new
+receipt.print(order) # => 
   # Your receipt:
   # - Burger - £7.49
   # ---------------

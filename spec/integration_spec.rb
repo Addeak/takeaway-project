@@ -74,18 +74,34 @@ RSpec.describe "integration" do
       order.select(chips)
       order. select(coke)
       receipt = Receipt.new
-      expect(receipt.print(order)).to eq "
-      Your receipt:\n
-      - Burger - £7.49\n
-      - Chips - £3.99\n
-      - Coca-cola - £2.49\n
-      ---------------\n
-      Total: £13.97"
+      expect(receipt.print(order)).to eq [
+      "Your receipt:",
+      "* Burger - £7.49",
+      "* Chips - £3.99",
+      "* Coca-cola - £2.49",
+      "---------------",
+      "Total: £13.97"].join("\n")
 
     end
+
+    it "provides a receipt when dishes have been ordered and some removed" do
+      burger = Dish.new("Burger", 7.49)
+      chips = Dish.new("Chips", 3.99)
+      coke = Dish.new("Coca-cola", 2.49)
+      menu = Menu.new
+      menu.add(burger)
+      menu.add(chips)
+      menu.add(coke)
+      order = Order.new(menu)
+      order.select(burger)
+      order.select(chips)
+      order. remove(chips)
+      receipt = Receipt.new
+      expect(receipt.print(order)).to eq [
+      "Your receipt:",
+      "* Burger - £7.49",
+      "---------------",
+      "Total: £7.49"].join("\n")
+    end
   end
-
-
-
-
 end

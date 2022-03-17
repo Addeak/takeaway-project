@@ -1,6 +1,5 @@
 class Order
   def initialize(menu) 
-    @menu = menu
     @order = []
   end
 
