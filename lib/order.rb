@@ -9,7 +9,7 @@ class Order
 
   def remove(dish)
     fail "This dish is not on the order." unless @order.include?(dish)
-    @order.delete(dish)
+    @order.delete_at(@order.index(dish))
   end
 
   def show
