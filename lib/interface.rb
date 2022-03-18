@@ -2,6 +2,7 @@ require './lib/dish'
 require './lib/menu'
 require './lib/order'
 require './lib/receipt'
+require './lib/messenger'
 
 class Interface
   def initialize(menu)
@@ -65,12 +66,18 @@ class Interface
   end
 
   def place_order
-    request_number
+    number = request_number
+    send_sms(number) unless number == ""
     print_receipt
   end
 
   def request_number
-    # asks user to enter phone number - checks it's valid - error if not
+    puts "Enter your number if you would like a confirmation of your order via sms. If not, just hit enter."
+    number = gets.chomp
+  end
+
+  def send_sms(number)
+    send(number)
   end
 
   def print_receipt
